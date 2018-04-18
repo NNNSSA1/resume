@@ -39,7 +39,7 @@
         <div class="marsk"></div>
     </div>
     <main>
-        <div class="usercard">
+        <div class="usercard" style="margin-top:-380px;" >
             <div class="picANDtext clearfix">
                 <div class="pic">
                     <img src="./img/pic.jpg" alt="头像">
@@ -83,34 +83,85 @@
                 </a>                                   
             </footer>           
         </div>
-        <a href="" class="button">下载PDF简历</a>
-        你好，我叫宋萌，目前正在学习前端开发。
-    </main>
-    <section>
-        <h2>技能</h2>
-        <ol>
-            <li>HTML 5 &amp; CSS 3</li>
-            <li>Javascript</li>
-            <li>jQuery</li>
-            <li>vue</li>
-            <li>React</li>
-            <li>HTTP</li>
-        </ol>
-    </section>
-    <section>
-        <h2>作品集</h2>
-        <nav>
-            <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生Js &amp; 原生CSS</li>
+        <p class="downloadPDF"><a href="./resume.txt" class="download-resume" target="_blank" download>下载PDF简历</a></p>
+        <p class="resume-text">你好，我叫宋萌，目前正在学习前端开发。
+            <br>技能：HTML5, CSS3 ,Javascript,jQuery ,vue ,React</p>
+        <section class="skills">
+            <h2>技能</h2>
+            <ol class="clearfix">
+                <li>
+                    <h3>HTML 5 &amp; CSS 3</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width:50%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Javascript</h3>
+                    <div class="progress-bar" >
+                        <div class="progress" style="width:10%;"></div>
+                    </div>  
+                </li>
+                <li>
+                    <h3>jQuery</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width:10%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>vue</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width:10%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>React</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width:10%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Http</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width:10%;"></div>
+                    </div>
+                </li>
             </ol>
-        </nav>
-        <div class="works">
-            <div class="big"></div>
-            <div class="small"></div>
-            <div class="small"></div>
-        </div>
-    </section>
+        </section>
+        <section class="production">
+            <h2>作品集</h2>
+            <nav>
+                <ol class="clearfix">
+                    <li id="productionAll">所有</li>
+                    <li id="productionFrame">框架</li>
+                    <li id="productionProtogenesis">原生Js &amp; 原生CSS</li>
+                </ol>
+                <div id="barCilck" class="production-bar state-1">
+                    <div class="production-bar-inner"></div>        
+                </div>
+            </nav>
+            <script>
+                productionAll.onclick=function(){
+                    barCilck.className = "production-bar state-1"
+                }
+                productionFrame.onclick=function(){
+                    barCilck.className = "production-bar state-2"
+                }
+                productionProtogenesis.onclick=function(){
+                    barCilck.className = "production-bar state-3"
+                }
+            </script>
+            <div class="works" style="height: 597px;">
+                <div class="big" style="top: 0; left: 0;">
+                    <img src="./img/big.jpg"  alt="production">
+                </div>
+                <div class="small" style="top: 0;left: 627px;">
+                        <img src="./img/small1.jpg"  alt="production">
+                </div>
+                <div class="small" style="top: 298px; left: 627px;">
+                        <img src="./img/small2.jpg" alt="production">
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

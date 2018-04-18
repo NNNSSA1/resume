@@ -14,6 +14,12 @@ hr{
     border: none;
     border-top: 1px solid #dedede;
 }
+ul,ol{
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
 .clearfix::after{
     content: "";
     display: block;
@@ -82,6 +88,7 @@ hr{
     background-color: #ffffff;
     max-width: 1023px;
     margin: 0 auto;
+    box-shadow: 0px 4px 9px 2px rgba(0,0,0,0.3);
 }
 
 .usercard .pic{
@@ -150,7 +157,7 @@ hr{
     width: 45px;
     line-height: 30px;
     padding:  7px 0;
-    margin: 25px 35px;
+    margin: 20px 35px;
   }
   .usercard .media svg{
     width: 30px;
@@ -161,3 +168,151 @@ hr{
   .usercard .media a:hover{
     background-color: #d05c60;
   }
+  main .downloadPDF{
+      text-align: center;
+  }
+  main .download-resume{
+      display: inline-block;
+      border: 1px solid #cdcfd1;
+      vertical-align: top;
+      font-weight: bold;
+      padding: 21px 55px;
+      margin: 40px 0;
+      transition-duration: 0.3s;
+  }
+  main .download-resume:hover{
+    box-shadow: 0px 4px 9px 2px rgba(0,0,0,0.2);
+  }
+  main .resume-text{
+    max-width: 1023px;
+    margin:0 auto;
+    text-align: center;
+    line-height: 28px;
+  }
+main .skills{
+    max-width: 1023px;
+    margin-left: auto;
+    margin-right: auto;
+}
+main .skills>h2{
+    margin: 37px 0;
+    font-weight: bold;
+    text-align: center;
+}
+main .skills>ol{
+    padding: 0 47px 55px 55px;
+    background-color: #ffffff;
+    border: 1px solid #c9c9c9;
+    box-shadow: 0px 4px 9px 2px rgba(0,0,0,0.2);
+}
+main .skills>ol>li{
+    margin-top: 40px;
+    float: left;
+    width: 48%;
+}
+main .skills>ol>li:nth-child(even){
+    float: right;
+    width: 48%;
+}
+main .skills>ol>li>h3{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+main .skills>ol>li .progress-bar{
+    position: relative;
+    height: 5px;
+    background-color: #fae1e1;
+    border-radius: 2px;
+}
+main .skills>ol>li .progress{
+    position: absolute;
+    background-color: #e8676b;
+    width: 80%;
+    height: 100%;
+    border-radius: 2px;
+}
+main .production{
+    max-width: 1023px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+main .production>h2{
+    font-weight: bold;
+    margin: 90px 0 45px 0;
+    text-align: center;
+}
+main .production>nav{
+    display: inline-block;
+}
+main .production>nav>ol{
+    display: inline-block;
+    vertical-align: top;
+}
+main .production>nav>ol>li{
+    margin-left: 55px;
+    float: left;
+    cursor: pointer;
+}
+main .production>nav>ol>li:nth-child(1){
+    margin: 0;
+}
+main .production-bar{
+    margin: 17px 0 33px 0;
+    height: 5px;
+    background-color:#FFFFFF;
+    border-radius: 2px;
+}
+main .production-bar>.production-bar-inner{
+    height: 100%;
+    background-color:#e8676b;
+    border-radius: 2px;
+    transition-duration: 0.7s;
+}
+main .production-bar.state-1>.production-bar-inner{
+    margin-left: 0;
+    width: 30px;
+}
+main .production-bar.state-2>.production-bar-inner{
+    margin-left: 60px;
+    width: 100px;
+}
+main .production-bar.state-3>.production-bar-inner{
+    margin-left: 172px;
+    width: 133px;
+}
+.works{
+    position: relative;
+    margin-bottom: 200px;
+}
+.works>.big{
+    position: absolute;
+    box-shadow: -1px -4px 9px 0px rgba(0,0,0,0.2);
+}
+.works>.small{
+    position: absolute;
+    box-shadow: -1px -4px 9px 0px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.div{
+    position: relative;
+}
+.div>div{
+    position: absolute;
+    top: 50%;
+}
