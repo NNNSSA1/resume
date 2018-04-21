@@ -301,18 +301,3 @@ main .production-bar.state-3>.production-bar-inner{
 
 
 
-
-
-
-
-
-
-
-
-.div{
-    position: relative;
-}
-.div>div{
-    position: absolute;
-    top: 50%;
-}
