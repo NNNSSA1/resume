@@ -66,8 +66,35 @@ h1,h2,h3,h4,h5,h6{
     float: left;
     margin-left: 17px;
     margin-right: 17px;
+    position: relative;
+}
+.top-nav-bar nav .submenu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    color: #3d4451;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    animation: submenuSlide 0.5s;
+}
+@keyframes submenuSlide{
+    0%{
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0;
+    }
+}
+.top-nav-bar nav .submenu>li{
+    white-space: nowrap;
+    padding: 10px 20px;                     /** 不允许换行 **/
+}
+.top-nav-bar nav li.active>.submenu{
+    display: block;
 }
 .top-nav-bar nav>ul>li>a{
+    position: relative;
     font-weight: bold;
     font-size: 12px;
     color: inherit;
@@ -77,9 +104,26 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 3px solid transparent;
     border-top: 3px solid transparent;
 }
-.top-nav-bar nav>ul>li>a:hover{
-    border-bottom: 3px solid #e06567;
+.top-nav-bar nav>ul>li.active>a::after{
+    content: '';
+    display: block;
+    position: absolute;
+   background: #e06567;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    animation: menuSlide 0.5s;
 }
+@keyframes menuSlide{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
 .banner{
     background-image: url(./img/bc.jpg);
     background-position: center;
