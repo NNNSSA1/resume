@@ -73,7 +73,7 @@
         <div class="marsk"></div>
     </div>
     <main>
-        <div id="siteAbout" class="usercard" style="margin-top:-380px;" >
+        <div data-x id="siteAbout" class="usercard" style="margin-top:-380px;" >
             <div class="picANDtext clearfix">
                 <div class="pic">
                     <img src="./img/pic.jpg" alt="头像">
@@ -120,48 +120,48 @@
         <p class="downloadPDF"><a href="./resume.txt" class="download-resume" target="_blank" download>下载PDF简历</a></p>
         <p class="resume-text">你好，我叫宋萌，目前正在学习前端开发。
             <br>技能：HTML5, CSS3 ,Javascript,jQuery ,vue ,React</p>
-        <section id="siteSkills" class="skills">
+        <section data-x id="siteSkills" class="skills">
             <h2>技能</h2>
             <ol class="clearfix">
                 <li>
                     <h3>HTML 5 &amp; CSS 3</h3>
                     <div class="progress-bar">
-                        <div class="progress" style="width:50%;"></div>
+                        <div class="progress" style="width:70%;"></div>
                     </div>
                 </li>
                 <li>
                     <h3>Javascript</h3>
                     <div class="progress-bar" >
-                        <div class="progress" style="width:10%;"></div>
+                        <div class="progress" style="width:60%;"></div>
                     </div>  
                 </li>
                 <li>
                     <h3>jQuery</h3>
                     <div class="progress-bar">
-                        <div class="progress" style="width:10%;"></div>
+                        <div class="progress" style="width:60%;"></div>
                     </div>
                 </li>
                 <li>
                     <h3>vue</h3>
                     <div class="progress-bar">
-                        <div class="progress" style="width:10%;"></div>
+                        <div class="progress" style="width:50%;"></div>
                     </div>
                 </li>
                 <li>
                     <h3>React</h3>
                     <div class="progress-bar">
-                        <div class="progress" style="width:10%;"></div>
+                        <div class="progress" style="width:50%;"></div>
                     </div>
                 </li>
                 <li>
                     <h3>Http</h3>
                     <div class="progress-bar">
-                        <div class="progress" style="width:10%;"></div>
+                        <div class="progress" style="width:30%;"></div>
                     </div>
                 </li>
             </ol>
         </section>
-        <section id="siteProduction" class="production">
+        <section  data-x id="siteProduction" class="production">
             <h2>作品集</h2>
             <nav>
                 <ol class="clearfix">
@@ -197,18 +197,54 @@
             </div>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script>
         var loadingPage = document.getElementById('loadingPage')
         setTimeout(function() {
             loadingPage.classList.remove('active')
-        }, 3000)
+        }, 1000)
+
+
+        let specialTags = document.querySelectorAll('[data-x]')
+        for(let i = 0;i<specialTags.length;i++){
+            specialTags[i].classList.add('offset')
+        }
+        setTimeout(function(){
+            find()
+        }, 1000);
+       
         window.onscroll = function(){
             if(window.scrollY > 0){
                 topNavBar.classList.add('sticky')
             }else{
                 topNavBar.classList.remove('sticky')
             }
+            find()   
         }
+
+        function find(){
+                let specialTags = document.querySelectorAll('[data-x]')
+                let minindex = 0
+                for(let i = 1;i<specialTags.length; i++){
+                    if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minindex].offsetTop - window.scrollY) ){
+                        minindex = i 
+                    }
+                }
+                //minindex就是距离窗口最近的元素
+                specialTags[minindex].classList.remove('offset')
+                for(let i = 0;i<specialTags.length; i++){
+                    specialTags[i].classList.remove('active')
+                }
+                    specialTags[minindex].classList.add('active')
+                let id = specialTags[minindex].id
+                let a = document.querySelector('a[href="#'+ id +'"]')
+                let li = a.parentNode
+                let brotherAndMe = li.parentNode.children
+                for(let i = 0; i<brotherAndMe.length;i++){
+                    brotherAndMe[i].classList.remove('highlight')
+                }
+                    li.classList.add('highlight')
+            }
 
         let liTags = document.querySelectorAll('nav>ul>li')
             for(let i = 0; i< liTags.length ;i++){
@@ -220,6 +256,13 @@
                 }
             }
         let aTags = document.querySelectorAll("nav>ul>li>a")
+                    // Setup the animation loop.
+            function animate(time) {
+                requestAnimationFrame(animate);
+                TWEEN.update(time);
+            }
+            requestAnimationFrame(animate);
+
             for(let i = 0 ;i < aTags.length ; i++){
                 aTags[i].onclick = function(x){
                     x.preventDefault()
@@ -227,7 +270,23 @@
                     let href = a.getAttribute('href')       //只是获取到了href的值'#...'
                     let element = document.querySelector(href)    //这一行就获取到了那个值的元素
                     let top = element.offsetTop         //获取元素到页面顶部的高度
-                    window.scrollTo(0,top-80)
+
+                    // let n = 50  移动的次数
+                    // let t = 500/n  多少时间动一次
+                    let currentTop = window.scrollY  //当前用户的的高度
+                    let targetTop = top-80      //目标距离
+                    let s = targetTop - currentTop     //我们所要移动的距离
+                    let t = Math.abs((s/100)*300)         //根据距离的增长时间增加(绝对值)
+                    if(t>800){t = 800}
+                    // let distance = (targetTop - currentTop )/n      我们所要移动到的距离(每次移动)                          
+                    var coords = {y: currentTop}; 
+                    var tween = new TWEEN.Tween(coords) 
+                            .to({y: targetTop},t) 
+                            .easing(TWEEN.Easing.Quadratic.In) 
+                            .onUpdate(function() { 
+                                window.scrollTo(0,coords.y)
+                            })
+                            .start();      
                 }
             }
     </script>

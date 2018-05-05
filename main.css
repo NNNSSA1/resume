@@ -25,6 +25,24 @@ h1,h2,h3,h4,h5,h6{
     display: block;
     clear: both;
 }
+[data-x].animate{
+    animation: slideUp 1s;
+}
+[data-x].offset{
+    transform: translateY(300px);
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all  0.5s;
+}
+@keyframes slideUp{
+    0%{
+        transform: translateY(300px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
 .top-nav-bar.sticky{
     background: white;
     padding: 10px 0;
@@ -105,7 +123,8 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 3px solid transparent;
     border-top: 3px solid transparent;
 }
-.top-nav-bar nav>ul>li.active>a::after{
+.top-nav-bar nav>ul>li.active>a::after,
+.top-nav-bar nav>ul>li.highlight>a::after{
     content: '';
     display: block;
     position: absolute;
@@ -277,6 +296,7 @@ main .skills>ol>li .progress-bar{
     height: 5px;
     background-color: #fae1e1;
     border-radius: 2px;
+    overflow: hidden;
 }
 main .skills>ol>li .progress{
     position: absolute;
@@ -284,6 +304,12 @@ main .skills>ol>li .progress{
     width: 80%;
     height: 100%;
     border-radius: 2px;
+    transform: translateX(0);
+    transition: all 1s;
+}
+main .skills.offset .progress{
+    transform: translateX(-100%);
+    
 }
 main .production{
     max-width: 1023px;
