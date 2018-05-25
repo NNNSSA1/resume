@@ -1,5 +1,5 @@
 !function () {
-    var view = document.querySelector('#mySliders')
+    var view = window.View('#mySliders')
     var controller = {
         view: null,
         swiper: null,
